@@ -19,6 +19,7 @@ namespace AKS_API
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+                .UseUrls("http://*:82")
                 .UseStartup<Startup>()
                 .Build();
     }

@@ -4,16 +4,27 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
+using AKS_API.Model;
+using AKS_API.Data;
+
 namespace AKS_API.Controllers
 {
+    [Produces("application/json")]
     [Route("api/[controller]")]
-    public class ValuesController : Controller
+    public class HeroesController : Controller
     {
+        private HeroRepository _repository = new HeroRepository();
+
+        //public HeroesController(HeroRepository repository)
+        //{
+        //    _repository = repository;
+        //}
+
         // GET api/values
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<Hero> Get()
         {
-            return new string[] { "value1", "value2" };
+            return _repository.GiveMeAllHeroes();
         }
 
         // GET api/values/5
